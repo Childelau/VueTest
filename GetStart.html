@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        {{message}}
+    </div>
+    <!-- declarative rendering -->
+    <div id="app-2">
+        <span v-bind:title='message'>
+            Hover you mouse over here for a few second
+        </span>
+    </div>
+    <!-- conditions and loops -->
+    <div id="app-3">
+        <span v-if='seen'>Now you see me</span>
+    </div>
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ol>
+    </div>
+    <!-- Handling User Input -->
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click='reverseMessage'>Reverse Message</button>
+
+    </div>
+
+
+</body>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+var app = new Vue({
+    el:'.app',
+    data:{
+        message:'Hello world!'
+    }
+})
+var app2 = new Vue({
+    el:'#app-2',
+    data:{
+        message:'You loaded  this pade on' + new Date().toLocaleDateString()
+    }
+})
+var app3 = new Vue({
+    el:'#app-3',
+    data:{
+        seen: true
+    }
+})
+var app4 = new Vue({
+    el:'#app-4',
+    data:{
+        todos:[
+            {text:'Learn JavaScript'},
+            {text:'Learn Vue'},
+            {text:'Build something awesome'}
+        ]
+    }
+})
+var app5 = new Vue({
+    el:'#app-5',
+    data:{
+        message:'Hello World!'
+    },
+    methods: {
+        reverseMessage: function(){
+            this.message = this.message.split('').reverse().join('')
+        }
+    }
+})
+</script>
+</html>
