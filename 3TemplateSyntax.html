@@ -16,6 +16,11 @@
         <!-- Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive: -->
         <div v-bind:id='dynamicId'></div>
         <button v-bind:disabled='isButtonDisabled'>Button</button>
+        <p v-if='seen'>Now you see me</p>
+        <a v-bind:href="url">BAIDU</a><br>
+        <a v-on:click='doSomething'>do doSomething</a><br>
+        <a v-bind:[attributeName]="url">attributeName</a><br>
+        <a v-on:[eventName]="doSomething">eventName</a><br>
     </div>
     
 
@@ -32,8 +37,15 @@ var app1 = new Vue({
     data:{
         rawHtml:'<span style="color:red">This should be red.</span>',
         dynamicId:'aaa',
-        isButtonDisabled: true
-    }
+        isButtonDisabled: true,
+        seen: true,
+        url: 'https://www.baidu.com'
+    },
+    methods: {
+        doSomething: function(){
+            alert('Do something')
+        }
+    },
 })
 
 
